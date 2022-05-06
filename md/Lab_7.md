@@ -3,7 +3,7 @@ Kubernetes Controllers
 
 
 
-This chapter introduces the concept of Kubernetes controllers and
+This lab introduces the concept of Kubernetes controllers and
 explains how to use them to create replicated Deployments. We will
 describe the use of different types of controllers, such as ReplicaSets,
 Deployments, DaemonSets, StatefulSets, and Jobs. You will learn how to
@@ -58,7 +58,7 @@ following steps:
     `2`. The Pod selector has been set in such a way that this
     ReplicaSet will manage the Pods with the
     `environment: production` label. The Pod template has the
-    simple Pod configuration that we used in previous chapters. We have
+    simple Pod configuration that we used in previous labs. We have
     ensured that the Pod label selector matches the Pod\'s labels in the
     template exactly.
 
@@ -1465,8 +1465,8 @@ created by the Job runs to completion. Implementing Jobs for parallel
 tasks is a bit more complicated, and we will leave that out of this
 workshop for brevity.
 
-Next, let\'s wrap this chapter up with an activity where we will create
-a Deployment and bring together several ideas learned in this chapter.
+Next, let\'s wrap this lab up with an activity where we will create
+a Deployment and bring together several ideas learned in this lab.
 
 
 
@@ -1486,7 +1486,7 @@ application:
     corresponding values:
     
     ```
-    chapter=controllers
+    lab=controllers
     activity=1
     ```
     
@@ -1555,7 +1555,7 @@ Kubernetes offers various controllers to leverage various benefits,
 including automatic replication, health monitoring, and automatic
 scaling.
 
-In this chapter, we covered different kinds of controllers and
+In this lab, we covered different kinds of controllers and
 understood when to use each of them. We created ReplicaSets and observed
 how they manage Pods. We learned when to use DaemonSets and
 StatefulSets. We also created a Deployment and learned how we can scale
@@ -1563,7 +1563,7 @@ up and down the number of replicas and roll back to an earlier version
 of the Deployment. Finally, we learned how to create Jobs for one-time
 tasks. All of these controllers come into play when you want to deploy a
 production-ready application or workload, as you will see in the
-upcoming chapters.
+upcoming labs.
 
-In the next chapter, we will see how we can discover and access the Pods
+In the next lab, we will see how we can discover and access the Pods
 or replicas managed by a Deployment or a ReplicaSet.

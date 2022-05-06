@@ -7,14 +7,14 @@ Advanced Scheduling in Kubernetes
 
 Overview
 
-This chapter focuses on scheduling, which is the process by which
-Kubernetes selects a node for running a Pod. In this chapter, we will
+This lab focuses on scheduling, which is the process by which
+Kubernetes selects a node for running a Pod. In this lab, we will
 take a closer look at this process and the Kubernetes Scheduler, which
 is the default Kubernetes component responsible for this process.
 
-By the end of this chapter, you will be able to use different ways to
+By the end of this lab, you will be able to use different ways to
 control the behavior of the Kubernetes Scheduler to suit the
-requirements of an application. The chapter will equip you to be able to
+requirements of an application. The lab will equip you to be able to
 choose appropriate Pod scheduling methods to control which nodes you
 want to run your Pods on based on your business needs. You will learn
 about the different ways to control the scheduling of Pods on the
@@ -52,7 +52,7 @@ node(s) the Pod should run on?
 
 That\'s right -- we don\'t need to; Kubernetes comes with a smart
 component that finds the best node to run your Pod. This component is
-the **Kubernetes Scheduler**. In this chapter, we will look a bit more
+the **Kubernetes Scheduler**. In this lab, we will look a bit more
 deeply into how the Kubernetes Scheduler works, and how to adapt it to
 better control our cluster to suit different needs.
 
@@ -160,7 +160,7 @@ amount of free resources.
 Note
 
 There are far too many priority functions to cover within the limited
-scope of this chapter. The full list of priority functions can be found
+scope of this lab. The full list of priority functions can be found
 at the following link:
 <https://kubernetes.io/docs/concepts/scheduling/kube-scheduler/#scoring>.
 
@@ -2043,7 +2043,7 @@ Note
 Before starting this activity, make sure that the nodes are not tainted
 from the previous exercises. To see how to remove a taint, please see
 *step 15* of *Exercise 17.01*, *Running a Pod with Node Affinity* in
-this chapter.
+this lab.
 
 Here are some guidelines for the activity:
 

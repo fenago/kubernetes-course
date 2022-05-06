@@ -1,7 +1,7 @@
 Introduction to Kubernetes and Containers
 =========================================
 
-By the end of the chapter, you will be able to run a basic Docker
+By the end of the lab, you will be able to run a basic Docker
 container from an image. You will also be able to package a custom
 application to make your own Docker image.
 
@@ -680,12 +680,12 @@ Hello, you're visitor #3.
 **Bonus Objective**
 
 Until now, we have implemented the basics of Docker that we have learned
-in this chapter. However, we can demonstrate the need to link different
+in this lab. However, we can demonstrate the need to link different
 containers by extending this activity.
 
 For an application, usually, we need multiple containers to focus on
 different functionalities and then connect them together as a fully
-functional application. Later on, in this book, you will learn how to do
+functional application. Later on, in this course, you will learn how to do
 this using Kubernetes; however, for now, let\'s connect the containers
 directly.
 
@@ -801,7 +801,7 @@ Summary
 =======
 
 
-In this chapter, we walked you through a brief
+In this lab, we walked you through a brief
 history of software development and explained some of the challenges in
 the VM era. With the emergence of Docker, containerization technologies
 open a new gate in terms of resolving the problems that existed with
@@ -814,5 +814,5 @@ orchestration and illustrated the problems it aims to solve. Finally, we
 gave a very brief overview of some of the key features and methodologies
 of Kubernetes.
 
-In the next chapter, we will dive a little deeper and take a look at
+In the next lab, we will dive a little deeper and take a look at
 Kubernetes\' architecture to understand how it works.

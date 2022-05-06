@@ -2,7 +2,7 @@
 =======
 
 
-This chapter introduces the concept of pods and teaches how to properly
+This lab introduces the concept of pods and teaches how to properly
 configure and deploy them. We will begin by creating a simple pod with
 your application container running in it. We will explain what the
 different aspects of pod configuration mean and decide which
@@ -11,7 +11,7 @@ able to define resource allocation requirements and limits for pods. We
 will then move on to see how we can debug the pod, check the logs, and
 make changes to it when needed. Some more useful tools for managing
 faults in pods, such as liveness and readiness probes and restart
-policies, are also covered in this chapter.
+policies, are also covered in this lab.
 
 
 
@@ -355,7 +355,7 @@ kubectl commands from `default` to `kube-public`.
     namespace instead.
 
 4.  In this step, we will undo the changes so that it doesn\'t affect
-    the upcoming exercises in this chapter. We will change the default
+    the upcoming exercises in this lab. We will change the default
     namespace to `default` again to avoid any confusion:
 
     
@@ -380,7 +380,7 @@ reset the default namespace of the context.
 Node
 ----
 
-As you have learned in earlier chapters, nodes are the various machines
+As you have learned in earlier labs, nodes are the various machines
 running in our cluster. This field reflects the node in the Kubernetes
 cluster where this pod was running. Knowing what node a pod is running
 on can help us with debugging issues with that pod. Observe the sixth
@@ -432,7 +432,7 @@ Note
 
 In a production environment, `nodeName` is typically not used
 for assigning a certain pod to run on the desired node. In the next
-chapter, we will learn about `nodeSelector`, which is a better
+lab, we will learn about `nodeSelector`, which is a better
 way to control which node the pod gets assigned to.
 
 
@@ -454,14 +454,14 @@ Status: Running
 This states that the current status of the pod is `Running`.
 This field reflects which phase of its life cycle a pod is in. We will
 talk about various phases of a pod\'s life cycle in the next section of
-this chapter.
+this lab.
 
 
 
 Containers
 ----------
 
-Earlier in this chapter, we saw that we can bundle various containers
+Earlier in this lab, we saw that we can bundle various containers
 inside a pod. This field lists all the containers that we have created
 in this pod. Consider the output field from line 12 onwards in *Figure
 5.1*:
@@ -899,7 +899,7 @@ too much memory that impacts the other pods running in the same
 namespace/cluster. Hence, it\'s a good idea to add resource requests and
 limits to the pod configuration in a production environment.
 
-As mentioned earlier in the chapter, a pod can run
+As mentioned earlier in the lab, a pod can run
 more than one container. In the following exercise, we will create a pod
 with more than one container.
 
@@ -1421,7 +1421,7 @@ Summary
 =======
 
 
-In this chapter, we have
+In this lab, we have
 explored various components of pod configuration and learned when to use
 what. We should now be able to create a pod and choose the right values
 of various fields in the pod configuration according to the needs of
@@ -1430,7 +1430,7 @@ our strong understanding of this essential, basic building block and
 extend it to develop a full-fledged application that\'s deployed
 reliably.
 
-In the next chapter, we will discuss how we can add labels and arbitrary
+In the next lab, we will discuss how we can add labels and arbitrary
 metadata to pods and use them to identify or search for pods. That will
 help us to organize our pods as well as choose a subset of them when
 required.

@@ -3,12 +3,12 @@ Service Discovery
 ====================
 
 
-In this chapter, we will take a look at how to route traffic between the
-various kinds of objects that we have created in previous chapters and
+In this lab, we will take a look at how to route traffic between the
+various kinds of objects that we have created in previous labs and
 make them discoverable from both within and outside our cluster. This
-chapter also introduces the concept of Kubernetes Services and explains
+lab also introduces the concept of Kubernetes Services and explains
 how to use them to expose the application deployed using controllers
-such as Deployments. By the end of this chapter, you will be able to
+such as Deployments. By the end of this lab, you will be able to
 make your application accessible to the external world. You will also
 know about the different types of Services and be able to use them to
 make different sets of pods interact with each other.
@@ -283,7 +283,7 @@ To successfully complete this exercise, perform the following steps:
     is no interference.
 
 12. Delete both the Deployment and the Service to ensure you\'re working
-    on the clean ground for the rest of the exercises in this chapter:
+    on the clean ground for the rest of the exercises in this lab:
 
     
     ```
@@ -559,7 +559,7 @@ cluster using the `curl` command. Let\'s get started:
     
 
 13. Delete the Deployment and the Service to ensure you\'re working on
-    the clean ground for the following exercises in this chapter:
+    the clean ground for the following exercises in this lab:
 
     
     ```
@@ -623,7 +623,7 @@ the Kubernetes cluster by using the `curl` command to the set
 IP address. Let\'s get started:
 
 1.  Create a file called `nginx-deployment.yaml` with the same
-    content that we used in the previous exercises in this chapter.
+    content that we used in the previous exercises in this lab.
 
 2.  Run the following command to create the Deployment:
 
@@ -886,7 +886,7 @@ For the scope of this activity, consider the following tasks:
     Note
 
     We used something called a `ConfigMap` to add an
-    environment variable here. We will learn more about them in *Chapter
+    environment variable here. We will learn more about them in *Lab
     10*, *ConfigMaps and Secrets*.
 
 4.  Let\'s assume that, based on load testing the application, you have
@@ -946,7 +946,7 @@ Summary
 =======
 
 
-In this chapter, we covered the different ways in which we can expose
+In this lab, we covered the different ways in which we can expose
 our application running on Pods. We have seen how we can use a ClusterIP
 Service to expose an application inside the cluster. We have also seen
 how we can use a NodePort Service to expose an application outside the
@@ -954,6 +954,6 @@ cluster. We have also covered the LoadBalancer and ExternalName Services
 in brief.
 
 Now that we have created a Deployment and learned how to make it
-accessible from the external world, in the next chapter, we will focus
+accessible from the external world, in the next lab, we will focus
 on storage aspects. There, we will cover reading and storing data on
 disk, in and across Pods.

@@ -7,7 +7,7 @@ Running Stateful Components in Kubernetes
 
 Overview
 
-In this chapter, we will expand our skills to go beyond stateless
+In this lab, we will expand our skills to go beyond stateless
 applications and learn how to deal with stateful applications. We will
 learn about the various forms of state preservation mechanisms available
 to Kubernetes cluster operators and derive a mental model for where
@@ -15,7 +15,7 @@ certain options can be invoked to run applications well. We will also
 introduce Helm, a useful tool for deploying complex applications with
 various Kubernetes objects.
 
-By the end of this chapter, you will be able to use StatefulSets and
+By the end of this lab, you will be able to use StatefulSets and
 PersistentVolumes in conjunction to run apps that require disk-based
 state to be retained in between pod interruptions. You will also be able
 to deploy applications using Helm charts.
@@ -44,7 +44,7 @@ there\'s a problem in this -- what do we do with the parts of our
 applications that depend on the state being persisted from one
 interaction to the next? Without certain guarantees such as predictable
 naming for the pods and dependable storage operations, which we will
-learn about later in the chapter, such stateful components may fail if
+learn about later in the lab, such stateful components may fail if
 Kubernetes restarts the relevant pods or moves them around. However,
 before diving into the details of the aforementioned topics, let\'s talk
 briefly about stateful apps and why it\'s challenging to run them in a
@@ -65,7 +65,7 @@ Stateful Apps
 =============
 
 
-We briefly introduced the concept of statefulness in *Chapter 12*, *Your
+We briefly introduced the concept of statefulness in *Lab 12*, *Your
 Application and HA.* Stateful components of applications are a necessity
 to just about all information technology systems in the world. They\'re
 necessary to keep account details, records of transactions, information
@@ -127,7 +127,7 @@ solutions is reduced. So, using the end goal of predictable workload
 orchestration, is it then possible to run state-bearing components of
 our application in Kubernetes? The answer is an unequivocal yes. It is
 common to be hesitant to run stateful workloads in Kubernetes. We\'ve
-said from the beginning of this book that pods are ephemeral and should
+said from the beginning of this course that pods are ephemeral and should
 not be depended on for stability because, in the event of a node
 failure, they will be moved and restarted. So, before you decide that
 it\'s too risky to run a database in Kubernetes, consider this -- the
@@ -140,7 +140,7 @@ application failures much faster than a human.
 So, how do we accomplish this? The answer to that question is the use of
 a combination of two Kubernetes objects that you have learned about
 earlier -- **PersistentVolumes** and **StatefulSets**. These are
-introduced in *Chapters 7* and *9*, so we won\'t belabor their usage
+introduced in *labs 7* and *9*, so we won\'t belabor their usage
 here except to say that we\'re going to be bringing together all of the
 introductory topics into an example relevant to *our application*.
 
@@ -159,7 +159,7 @@ comes to running a database in Kubernetes:
 
 
 As you can see in the preceding diagram, and as you have learned up
-until now in this book, Kubernetes is made up of modular components.
+until now in this course, Kubernetes is made up of modular components.
 Thus, by leveraging the StatefulSet resource, we can compose the usage
 of PersistentVolumes, PersistentVolumeClaims, StorageClasses, pods, and
 some special rules around their life cycles that make much stronger
@@ -253,9 +253,9 @@ persistence-dependent applications.
 As we understand how StatefulSets are useful to predictably run the
 stateful components of our applications, let\'s look at a specific
 example that\'s relevant to us. As you\'ll recall from previous
-chapters, we have a little counter app that we are refactoring to
+labs, we have a little counter app that we are refactoring to
 leverage as many cloud-native principles as possible as we go along. In
-this chapter, we will be replacing the state persistence mechanism and
+this lab, we will be replacing the state persistence mechanism and
 testing out a new engine.
 
 
@@ -532,7 +532,7 @@ MySQL backend instead of Redis:
     
 
     You should see the app running as expected, as we have seen in the
-    previous chapters. And just like that, we have a working StatefulSet
+    previous labs. And just like that, we have a working StatefulSet
     with our application using MySQL that is persisting data.
 
 As we\'ve said, one of the things that will cause cluster operators to
@@ -804,7 +804,7 @@ with Helm 2 and want to know about the differences, you can refer to the
 documentation at this link:
 <https://v3.helm.sh/docs/faq/#changes-since-helm-2>.
 
-Detailed coverage of Helm is beyond the scope of this book, but the
+Detailed coverage of Helm is beyond the scope of this course, but the
 fundamentals covered here serve as a great starting point, and also put
 into perspective how different tools and technologies can work together
 to remove several hurdles of complex application orchestration in
@@ -1066,7 +1066,7 @@ Exercise 14.03: Chart-ifying Our Redis-Based Counter Application
 We created a generic Helm chart in the previous section, but what if we
 want to make our own chart for our software? In this exercise, we will
 create a Helm chart that will deploy our HA Redis-based solution from
-*Chapter 12*, *Your Application and HA*, using Helm.
+*Lab 12*, *Your Application and HA*, using Helm.
 
 1.  If you are inside the `chart-dev` directory, navigate to
     the parent directory:
@@ -1115,7 +1115,7 @@ create a Helm chart that will deploy our HA Redis-based solution from
     ```
     
 
-    You may recall from previous chapters that we had multiple
+    You may recall from previous labs that we had multiple
     Kubernetes manifests sharing one file, separated by the
     `---` YAML file separator string. Now that we have a tool
     for managing Kubernetes manifests, it\'s better to keep them in
@@ -1255,7 +1255,7 @@ the Redis backend for it. With these skills in the bag, you are soon to
 be a captain of Helm.
 
 In the following activity, we will bring together the two things we
-learned in this chapter -- refactoring our application for stateful
+learned in this lab -- refactoring our application for stateful
 components and then deploying it as a Helm chart.
 
 
@@ -1315,7 +1315,7 @@ Summary
 =======
 
 
-Over the course of this chapter, we have applied our skills to be able
+Over the course of this lab, we have applied our skills to be able
 to leverage StatefulSets in our example application. We have looked at
 how to think about running stateful portions of our software
 programmatically and how to refactor applications to leverage that

@@ -7,9 +7,9 @@ ConfigMaps and Secrets
 
 Overview
 
-In this chapter, we will learn how to decouple application configuration
+In this lab, we will learn how to decouple application configuration
 data from the application itself and the advantages of taking this
-approach. By the end of this chapter, you will be able to define
+approach. By the end of this lab, you will be able to define
 Kubernetes ConfigMap and Secret objects, run a simple Pod that uses data
 from ConfigMaps and Secrets, describe the advantages of decoupling
 configuration data from applications, and use ConfigMaps and Secrets to
@@ -19,7 +19,7 @@ Introduction
 ============
 
 
-In *Chapter 5*, *Pods*, we learned that Pods are the minimal unit of
+In *Lab 5*, *Pods*, we learned that Pods are the minimal unit of
 deployment in Kubernetes. Pods can have multiple containers, and each
 container can have a container image associated with it. This container
 image generally packages the target application that you plan to run.
@@ -35,7 +35,7 @@ applications in such a way that the environment-specific data is
 provided to the application by the environment it is being
 deployed into.
 
-In this chapter, we will discover what Kubernetes provides to associate
+In this lab, we will discover what Kubernetes provides to associate
 **environment-specific data** with our application containers without
 changing our container image. There are multiple ways to provide
 **environment-specific configuration** data to our application:
@@ -56,7 +56,7 @@ ConfigMap and Secret objects both serve a similar purpose. Both provide
 a way to define data that can be injected into your applications so that
 the same container can be used across different environments. There is
 little difference between them, which we will learn in detail later on
-in this chapter. As a quick rule, Secrets are designed to hold
+in this lab. As a quick rule, Secrets are designed to hold
 confidential data (such as passwords, private keys, and more), while
 ConfigMaps are more suited for general configuration data such as a
 database location. ConfigMaps and Secrets reside in the specific
@@ -127,7 +127,7 @@ You should see the following response:
 As you can see from the preceding output, ConfigMaps can be created for
 a single value, a list of values, or from an entire file or directory.
 We will learn exactly how to do each of these in the exercises in this
-chapter. Note that the command to create a ConfigMap has the following
+lab. Note that the command to create a ConfigMap has the following
 format:
 
 
@@ -165,8 +165,8 @@ You should see the following response as minikube starts up:
 
 
 
-For all of the exercises in this chapter, we recommend creating a new
-namespace. Recall from *Chapter 5*, *Pods*, that namespaces are
+For all of the exercises in this lab, we recommend creating a new
+namespace. Recall from *Lab 5*, *Pods*, that namespaces are
 Kubernetes\' way to group components of the solution together.
 Namespaces can be used to apply policies, quotas, and could also be used
 to separate resources if the same Kubernetes resources are being used by
@@ -190,7 +190,7 @@ This exercise shows how to create ConfigMaps using a key-value pattern.
 Please follow these steps to complete the exercise:
 
 1.  First, let\'s begin by creating a namespace for all of the exercises
-    in this chapter.
+    in this lab.
 
     
     ```
@@ -209,7 +209,7 @@ Please follow these steps to complete the exercise:
     Note
 
     We will use the `configmap-test` namespace for all the
-    exercises in this chapter unless mentioned otherwise.
+    exercises in this lab unless mentioned otherwise.
 
 2.  First, let\'s create a ConfigMap that contains a single name-value
     pair. Use the command shown here:
@@ -1337,7 +1337,7 @@ Summary
 =======
 
 
-In this chapter, we have seen the different ways that Kubernetes
+In this lab, we have seen the different ways that Kubernetes
 provides to associate environment-specific data with our applications
 running as containers.
 
@@ -1360,7 +1360,7 @@ packaged software. ConfigMaps and Secrets can then be used to provide
 specific configurations for using the packaged software in your
 organization.
 
-The next set of chapters is all about deploying Kubernetes and running
-it in high availability mode. These chapters will provide you with
+The next set of labs is all about deploying Kubernetes and running
+it in high availability mode. These labs will provide you with
 fundamental and practical knowledge regarding how to run stable clusters
 for Kubernetes.

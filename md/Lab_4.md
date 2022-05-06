@@ -7,13 +7,13 @@ How to Communicate with Kubernetes (API Server)
 
 Overview
 
-In this chapter, we will build a foundational understanding of the
+In this lab, we will build a foundational understanding of the
 Kubernetes API server and the various ways of interacting with it. We
 will learn how kubectl and other HTTP clients communicate with the
 Kubernetes API server. We will use some practical demonstrations to
 trace these communications and see the details of HTTP requests. Then,
 we will also see how we can look up the API details so that you can
-write your own API request from scratch. By the end of this chapter, you
+write your own API request from scratch. By the end of this lab, you
 will be able to create API objects by directly communicating with the
 API server using any HTTP client, such as curl, to make RESTful API
 calls to the API server.
@@ -33,13 +33,13 @@ Introduction
 ============
 
 
-As you will recall from *Chapter 2*, *An Overview of Kubernetes*, the
+As you will recall from *Lab 2*, *An Overview of Kubernetes*, the
 API server acts as the central hub that communicates with all the
-different components in Kubernetes. In the previous chapter, we took a
+different components in Kubernetes. In the previous lab, we took a
 look at how we can use kubectl to instruct the API server to do various
 things.
 
-In this chapter, we will take a further look into the components that
+In this lab, we will take a further look into the components that
 make up the API server. As the API server is at the center of our entire
 Kubernetes system, it is important to learn how to effectively
 communicate with the API server itself and how API requests are
@@ -47,7 +47,7 @@ processed. We will also look at various API concepts, such as resources,
 API groups, and API versions, which will help you understand the HTTP
 requests and responses that are made to the API server. Finally, we will
 interact with the Kubernetes API using multiple REST clients to achieve
-many of the same results we did in the previous chapter using the
+many of the same results we did in the previous lab using the
 kubectl command-line tool.
 
 
@@ -85,7 +85,7 @@ clients. You will usually see the API server implemented as
 Note
 
 We will explain the RESTful API in more detail in the *The Kubernetes
-API* section later in this chapter.
+API* section later in this lab.
 
 Now, let\'s recall how the API server looks in our Minikube cluster by
 running the following command:
@@ -104,7 +104,7 @@ You should see the following response:
 
 
 
-As we saw in previous chapters, in the Minikube environment, the API
+As we saw in previous labs, in the Minikube environment, the API
 server is referred to as `kube-apiserver-minikube` in the
 `kube-system` namespace. As you can see in the preceding
 screenshot, we have a single instance of the API server:
@@ -131,7 +131,7 @@ Kubernetes HTTP Request Flow
 ============================
 
 
-As we learned in earlier chapters, when we run any `kubectl`
+As we learned in earlier labs, when we run any `kubectl`
 command, the command is translated into an HTTP API request in JSON
 format and is sent to the API server. Then, the API server returns a
 response to the client, along with any requested information. The
@@ -177,7 +177,7 @@ strategies and authentication plugins at
 <https://kubernetes.io/docs/reference/access-authn-authz/authentication/>.
 
 We will take a look at the implementation of certificate-based
-authentication in *Chapter 11*, *Build Your Own HA Cluster*.
+authentication in *Lab 11*, *Build Your Own HA Cluster*.
 
 The API server will call those plugins one by one until one of them
 authenticates the request. If all of them fail, then the authentication
@@ -215,7 +215,7 @@ To understand this better, take a look at the following demonstration:
 Note
 
 We will not dive into too much detail about how to create users as this
-will be discussed in *Chapter 13*, *Runtime and Network Security in
+will be discussed in *Lab 13*, *Runtime and Network Security in
 Kubernetes*. For this demonstration, the users, along with their
 permissions, are already set up, and the limitation of their privileges
 is demonstrated by switching contexts.
@@ -302,7 +302,7 @@ request, then the request is dropped and it will not process further.
 Some examples are as follows:
 
 -   If we configure a custom rule that every object should have a label
-    (which you will learn how to do in *Chapter 16*, *Kubernetes
+    (which you will learn how to do in *Lab 16*, *Kubernetes
     Admission Controllers*), then any request to create an object
     without a label will be rejected by the admission controllers.
 -   When you delete a namespace, it goes to the **Terminating** state,
@@ -328,9 +328,9 @@ which modules from the default modules should be disabled.
 Note
 
 You will learn more about admission controllers, including creating
-custom ones, in *Chapter 16*, *Kubernetes Admission Controllers*.
+custom ones, in *Lab 16*, *Kubernetes Admission Controllers*.
 
-As you will recall from *Chapter 2*, *An Overview of Kubernetes*, when
+As you will recall from *Lab 2*, *An Overview of Kubernetes*, when
 we created a cluster using the `minikube start` command,
 Minikube enabled several modules for us by default. Let\'s take a closer
 look at that in the next exercise in which we will not only view the
@@ -480,7 +480,7 @@ meets the required format and standard.
 
 After successful validation, the API server stores the object in the
 etcd datastore and returns a response to the client. After that, as you
-learned in *Chapter 2*, *An Overview of Kubernetes*, other components,
+learned in *Lab 2*, *An Overview of Kubernetes*, other components,
 such as the scheduler and the controller manager, take over to find a
 suitable node and actually implement the object on your cluster.
 
@@ -553,7 +553,7 @@ which verbs are sent through which methods:
     Note
 
     If you have not encountered these commands yet, you will in the
-    upcoming chapters. Feel free to refer back to this chapter or the
+    upcoming labs. Feel free to refer back to this lab or the
     following Kubernetes documentation to find out how each API request
     works for any command:
     <https://kubernetes.io/docs/reference/kubernetes-api/>.
@@ -677,7 +677,7 @@ server, and `/api/v1/namespaces/kube-system/pods` is the API
 path. You can also see `limit=500` at the end of the URL path,
 which is the chunk size; kubectl fetches a large number of resources in
 chunks to improve latency. We will see some examples relating to
-retrieving large results sets in chunks later in this chapter.
+retrieving large results sets in chunks later in this lab.
 
 -   The next part of the output is as follows:
     
@@ -828,7 +828,7 @@ differences between namespace and cluster scope.
 Namespace-Scoped Resources
 --------------------------
 
-As we saw in *Chapter 2*, *An Overview of Kubernetes*, Kubernetes makes
+As we saw in *Lab 2*, *An Overview of Kubernetes*, Kubernetes makes
 use of Linux namespaces to organize most Kubernetes resources. Resources
 in the same namespace share the same control access policies and
 authorization checks. When a namespace is deleted, all resources in that
@@ -950,8 +950,8 @@ belong to the apps API group: `apps/v1`.
 Note
 
 You will learn about Deployments, ReplicaSets, and DaemonSets in detail
-in *Chapter 7*, *Kubernetes Controllers*. In fact, this chapter will
-talk about many API resources that you will encounter in later chapters.
+in *Lab 7*, *Kubernetes Controllers*. In fact, this lab will
+talk about many API resources that you will encounter in later labs.
 
 The `--api-group` flag can be used to scope the output to a
 specific API group, as we will see in the following sections. Let\'s
@@ -1195,7 +1195,7 @@ Exercise 4.02: Getting Information about API Resources
 
 Let\'s say that we want to create an ingress object. For the purposes of
 this exercise, you don\'t need to know much about ingress; we will learn
-about it in the upcoming chapters.
+about it in the upcoming labs.
 
 We will use kubectl to get more information about the Ingress API
 resource, determine which API versions are available, and find out which
@@ -1422,18 +1422,9 @@ enable/disable resources in an entire API group:
     You should see the following response:
 
     
-    ![Figure 4.37: Starting up Minikube with an additional API resource
-    group ](./images/B14870_04_37.jpg)
+    ![](./images/B14870_04_37.jpg)
     
 
-
-    group
-
-    Note
-
-    You can refer to the `minikube start` documentation for
-    further details about the `--extra-config` flag, at
-    <https://minikube.sigs.k8s.io/docs/handbook/config/>.
 
 2.  You can confirm it is enabled by checking the details about the
     `kube-apiserver-minikube` pod. Use the
@@ -1519,7 +1510,7 @@ enable/disable resources in an entire API group:
 
 6.  Now, let\'s disable `batch/v2alpha1` on our cluster. To do
     that, we need to access the Minikube virtual machine (VM) using SSH,
-    as demonstrated in previous chapters:
+    as demonstrated in previous labs:
 
     
     ```
@@ -1669,7 +1660,7 @@ tool, which made interacting with our cluster quite convenient. It does
 that by extracting the API server address and authentication information
 from the client kubeconfig file, which is located in
 `~/.kube/config` by default, as we saw in the previous
-chapter. In this section, we will look at the different ways to directly
+lab. In this section, we will look at the different ways to directly
 access the API server with HTTP clients such as curl.
 
 There are two possible ways to directly access the API server via the
@@ -1898,7 +1889,7 @@ server to create objects, you need to change three things:
     need to set the header to
     `'Content-Type: application/yaml'`.
 3.  Include the spec of the object to be created. As you learned in the
-    previous two chapters, each API resource is persisted in the etcd as
+    previous two labs, each API resource is persisted in the etcd as
     an API object, which is defined by a YAML spec/manifest file. To
     create an object, you need to use the `--data` flag to
     pass the YAML manifest to the API server so that it can persist it
@@ -2340,9 +2331,9 @@ ClusterRoleBinding.
 
 Note
 
-You will learn more about secrets in *Chapter 10*, *ConfigMaps and
-Secrets*; more on RBAC in *Chapter 13*, *Runtime and Network Security in
-Kubernetes*; and admission controllers in *Chapter 16*, *Kubernetes
+You will learn more about secrets in *Lab 10*, *ConfigMaps and
+Secrets*; more on RBAC in *Lab 13*, *Runtime and Network Security in
+Kubernetes*; and admission controllers in *Lab 16*, *Kubernetes
 Admission Controllers*.
 
 Every namespace contains a ServiceAccount called `default`. We
@@ -2605,9 +2596,9 @@ Note
 The view ClusterRole should already exist for your Kubernetes cluster,
 as it is one of the default ClusterRoles available for use.
 
-As you might recall from the previous chapter, this is an imperative
+As you might recall from the previous lab, this is an imperative
 approach to creating resources; you will learn how to create manifests
-for RBAC policies in *Chapter 13*, *Runtime and Network Security in
+for RBAC policies in *Lab 13*, *Runtime and Network Security in
 Kubernetes*. Note that we have to specify the ServiceAccount as
 `<namespace>:<ServiceAccountName>`, and we have a
 `--namespace` flag since a RoleBinding can only apply to the
@@ -2654,7 +2645,7 @@ Activity 4.01: Creating a Deployment Using a ServiceAccount Identity
 --------------------------------------------------------------------
 
 In this activity, we will bring together all that we have learned in
-this chapter. We will be using various operations on our cluster and
+this lab. We will be using various operations on our cluster and
 using different methods to access the API server.
 
 Perform the following operations using kubectl:
@@ -2716,7 +2707,7 @@ Summary
 =======
 
 
-In this chapter, we took a closer look at the Kubernetes
+In this lab, we took a closer look at the Kubernetes
 API server, the way that Kubernetes uses the
 RESTful API, and how API resources are defined. We learned that all
 commands from the kubectl command-line utility are translated into
@@ -2735,9 +2726,9 @@ API server, using the curl HTTP client to interact with objects by using
 different authentication methods, such as ServiceAccounts and an X.509
 certificate.
 
-In the next few chapters, we will inspect most of the commonly used API
+In the next few labs, we will inspect most of the commonly used API
 objects more closely, mainly focusing on the different functionalities
 offered by these objects to enable us to deploy and maintain our
 application in a Kubernetes cluster. We will begin this series of
-chapters by taking a look at the basic unit of deployment in Kubernetes
-(pods) in the next chapter.
+labs by taking a look at the basic unit of deployment in Kubernetes
+(pods) in the next lab.

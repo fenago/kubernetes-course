@@ -2,9 +2,9 @@ An Overview of Kubernetes
 ============================
 
 
-By the end of this chapter, you will have a single-node Minikube
+By the end of this lab, you will have a single-node Minikube
 environment set up where you can run many of the exercises and
-activities in this book. You will be able to understand the high-level
+activities in this course. You will be able to understand the high-level
 architecture of Kubernetes and identify the roles of the different
 components. You will also learn the basics required to migrate
 containerized applications to a Kubernetes environment.
@@ -155,7 +155,7 @@ output from `docker ps` into two other Bash commands:
     Without `grep -v pause`, you would find that each
     container is \"paired\" with a \"sandbox\" container (in Kubernetes,
     it\'s implemented as a `pause` image). This is because, as
-    mentioned in the previous chapter, Linux containers can be
+    mentioned in the previous lab, Linux containers can be
     associated (or isolated) by joining the same (or different) Linux
     namespace. In Kubernetes, a \"sandbox\" container is used to
     bootstrap a Linux namespace, and then the containers that run the
@@ -1420,7 +1420,7 @@ We can see `Running` under `STATUS` and that it\'s been assigned to the `minikub
 
 
 In the following activity, we will bring together the skills we learned
-in the chapter to find out how we can migrate from a container-based
+in the lab to find out how we can migrate from a container-based
 environment to a Kubernetes environment in order to run our application.
 
 
@@ -1429,7 +1429,7 @@ Activity 2.01: Running the Pageview App in Kubernetes
 -----------------------------------------------------
 
 In *Activity 1.01*, *Creating a Simple Page Count Application*, in the
-previous chapter, we built a web application called Pageview and
+previous lab, we built a web application called Pageview and
 connected it to a Redis backend datastore. So, here is a question:
 without making any changes to the source code, can we migrate the
 Docker-based application to Kubernetes and enjoy Kubernetes\' benefits
@@ -1447,7 +1447,7 @@ Similar to the `--link` option in Docker, Kubernetes provides
 a Service that serves as an abstraction layer to expose one application
 (let\'s say, a series of pods tagged with the same set of labels) that
 can be accessed internally or externally. For example, as we discussed
-in this chapter, a frontend app can be exposed via a
+in this lab, a frontend app can be exposed via a
 `NodePort` Service so that it can be accessed by external
 users. In addition to that, in this activity, we need to define an
 internal Service in order to expose the backend application to the
@@ -1456,7 +1456,7 @@ frontend application. Follow these steps:
 1.  In *Activity 1.01*, *Creating a Simple Page Count Application*, we
     built two Docker images -- one for the frontend Pageview web app and
     another for the backend Redis datastore. You can use the skills we
-    learned in this chapter to migrate them into Kubernetes YAMLs.
+    learned in this lab to migrate them into Kubernetes YAMLs.
 
 2.  Two pods (each managed by a Deployment) for the application is not
     enough. We also have to create the Service YAML to link them
@@ -1506,11 +1506,6 @@ so that the whole application is available as long as there is at least
 one replica running.
 
 **Running the Pageview App in Multiple Replicas**
-
-The Pageview app can certainly work with a single replica. However, in a
-production environment, high availability is essential and is achieved
-by maintaining multiple replicas across nodes to avoid single points of
-failure. (This will be covered in detail in upcoming chapters.)
 
 In Kubernetes, to ensure the high availability of an application, we can
 simply increase the replica number. Follow these steps to do so:
@@ -1573,7 +1568,7 @@ Summary
 =======
 
 
-In this chapter, we used Minikube to provision a single-node Kubernetes
+In this lab, we used Minikube to provision a single-node Kubernetes
 cluster and gave a high-level overview of Kubernetes\' core components,
 as well as its key design rationale. After that, we migrated an existing
 Docker container to Kubernetes and explored some basic Kubernetes API
@@ -1582,7 +1577,7 @@ intentionally broke a Kubernetes cluster and restored it one component
 at a time, which allowed us to understand how the different Kubernetes
 components work together to get a pod up and running on a node.
 
-Throughout this chapter, we have used kubectl to manage our cluster. We
+Throughout this lab, we have used kubectl to manage our cluster. We
 provided a quick introduction to this tool, but in the following
-chapter, we will take a closer look at this powerful tool and explore
+lab, we will take a closer look at this powerful tool and explore
 the various ways in which we can use it.

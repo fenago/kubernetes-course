@@ -2,7 +2,7 @@ Labels and Annotations
 =========================
 
 
-In this chapter, we will assign metadata to these pods in order to
+In this lab, we will assign metadata to these pods in order to
 identify the pods through queries based on some metadata and then add
 additional unstructured metadata.
 We
@@ -104,7 +104,7 @@ complete this exercise successfully, perform the following steps:
 
 
 The output shows various details relating to the pod (as we have seen in
-the previous chapter as well). In this case, we will focus on the
+the previous lab as well). In this case, we will focus on the
 highlighted section of the output, which shows that the desired labels,
 `app=nginx`, and `foo=bar`, were actually added to
 the pod. Note that, in this exercise, we added labels while creating the
@@ -1161,7 +1161,7 @@ Summary
 =======
 
 
-In this chapter, we have described labels and annotations and used them
+In this lab, we have described labels and annotations and used them
 to add metadata information, which can either be identifiable
 information that can be used to filter or select objects, or
 non-identifiable information that can be used by users or tools to get
@@ -1170,7 +1170,7 @@ we have also organized objects such as pods using labels and
 annotations. These are important skills that will help you manage your
 Kubernetes objects more efficiently.
 
-In the following chapters, as we become familiar with more Kubernetes
+In the following labs, as we become familiar with more Kubernetes
 objects such as Deployments and Services, we will see the further
 application of labels and label selectors while organizing pods for
 deployment or discovery.

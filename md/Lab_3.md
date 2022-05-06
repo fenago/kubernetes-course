@@ -2,15 +2,15 @@ kubectl -- Kubernetes Command Center
 =======================================
 
 
-In this chapter, we will demystify some common kubectl commands and see
+In this lab, we will demystify some common kubectl commands and see
 how we can use kubectl to control our Kubernetes cluster. We will begin
-this chapter by taking a brief look at what the end-to-end process looks
+this lab by taking a brief look at what the end-to-end process looks
 like when using kubectl commands to communicate with a Kubernetes
 cluster. Then, we will set up a few shortcuts and autocompletion for the
 Bash terminal. We will begin with the basics of using kubectl by
 learning how to create, delete, and manage Kubernetes objects. We will
 learn about the two approaches to managing resources in Kubernetes -
-declarative and imperative - with exercises. By the end of this chapter,
+declarative and imperative - with exercises. By the end of this lab,
 you will also have learned how to update a live application running on
 your Kubernetes cluster in real-time using kubectl.
 
@@ -47,7 +47,7 @@ complete this exercise:
 You can also use such as `k` instead
 of `kubectl` in your commands. However, to avoid confusion and
 maintain a standardized structure, we will use the full commands
-throughout this book.
+throughout this course.
 
 
 
@@ -110,7 +110,7 @@ used kubectl commands. This section is mostly for demonstration
 purposes, so you may not see the exact output that you see in these
 images. However, this section will help you understand how these
 commands are used. You will use most of them extensively in later
-exercises, as well as throughout this book. Let\'s take a look:
+exercises, as well as throughout this course. Let\'s take a look:
 
 -   If you want to display nodes, use the following command:
 
@@ -203,7 +203,7 @@ k get no
 
 Before we move on further with the demonstrations, we will mention a few
 commands that you can use to create a sample application, which we have
-already provided in the GitHub repository for this chapter. Use the
+already provided in the GitHub repository for this lab. Use the
 following command to fetch the YAML specification for all the objects
 required to run the application:
 
@@ -273,7 +273,7 @@ output may not exactly match the images shown here:
 
 
 -   A service is an abstraction that\'s used to expose an application to
-    the end-user. You will learn more about services in *Chapter 8*,
+    the end-user. You will learn more about services in *Lab 8*,
     *Service Discovery*. You can use the following command to list all
     services:
 
@@ -299,7 +299,7 @@ k get svc
 ```
 
 -   A Deployment is an API object that allows us to easily manage and
-    update pods. You will learn more about Deployments in *Chapter 7*,
+    update pods. You will learn more about Deployments in *Lab 7*,
     *Kubernetes Controllers*. You can get the list of Deployments using
     the following command:
 
@@ -696,17 +696,17 @@ Summary
 =======
 
 
-This chapter demystified how kubectl allows us to control our Kubernetes
+This lab demystified how kubectl allows us to control our Kubernetes
 cluster using API calls. First, we learned how to set up an environment
 for kubectl commands and looked at a number of shortcuts. Furthermore,
 we covered how to create, edit, and delete a Kubernetes object using
 kubectl commands and looked at a Deployment as an example. Finally, we
 deployed a real-life application and showed you how to edit a live
-Deployment. Every example in this chapter has been applied in a general
-context; however, we believe that the skills developed in this chapter
+Deployment. Every example in this lab has been applied in a general
+context; however, we believe that the skills developed in this lab
 can help you resolve specific problems that you might encounter in a
 professional environment.
 
-In the next chapter, you\'ll explore the other side of this bridge and
+In the next lab, you\'ll explore the other side of this bridge and
 dive deeper into how the API server works. You will also take a closer
 look at REST API requests and how the API server deals with them.

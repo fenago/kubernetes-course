@@ -8,9 +8,9 @@ Storing and Reading Data on Disk
 
 Overview
 
-This chapter introduces the concept of using Volumes to store or read
+This lab introduces the concept of using Volumes to store or read
 data from the containers running inside pods. By the end of this
-chapter, you will be able to create Volumes to temporarily store data in
+lab, you will be able to create Volumes to temporarily store data in
 a pod independent of a container\'s life cycle, as well as share the
 data among different containers inside the same pod. You will also learn
 how to use **PersistentVolumes** (**PVs**) to store data on your cluster
@@ -33,11 +33,11 @@ Introduction
 ============
 
 
-In previous chapters, we created Deployments to create multiple replicas
+In previous labs, we created Deployments to create multiple replicas
 of our application and exposed our application using Services. However,
 we have not yet properly explored how Kubernetes facilitates
 applications to store and read data, which is the subject of this
-chapter.
+lab.
 
 In practice, most applications interact with data in some way. It\'s
 possible that we may have an application that needs to read data from a
@@ -68,7 +68,7 @@ across pod restarts as well as Deployment updates or rollbacks.
 
 To serve these purposes, Kubernetes provides an abstraction called
 Volume. A **PersistentVolume** (**PV**) is the most common type of
-Volume that you will encounter. In this chapter, we will cover this, as
+Volume that you will encounter. In this lab, we will cover this, as
 well as many other types of Volumes. We will learn how to use them and
 provision them on-demand.
 
@@ -117,7 +117,7 @@ the same Volume will be used by the new container as well. Hence, the
 data isn\'t lost across container restarts. However, once a pod
 terminates or is restarted, the Volume ceases to exist, and the data is
 lost. To solve this problem, we can use PVs, which we will cover later
-in this chapter.
+in this lab.
 
 
 
@@ -1346,7 +1346,7 @@ policies determined by administrators. A provisioner is a system that
 determines how to provision a PV of a particular type. Kubernetes
 supports a set of internal provisioners as well as external ones that
 can be implemented by users. The details about how to use or create a
-provisioner are, however, beyond the scope of this book.
+provisioner are, however, beyond the scope of this course.
 
 A PV belonging to a certain storage class can only be bound to a PVC
 requesting that particular class. Note that this is an optional field.
@@ -1991,7 +1991,7 @@ Dynamic Provisioning
 ====================
 
 
-In previous sections of this chapter, we saw that the cluster
+In previous sections of this lab, we saw that the cluster
 administrator needs to provision PVs for us before we can use them as
 storage for our application. To solve this problem, Kubernetes supports
 dynamic volume provisioning as well. Dynamic volume provisioning enables
@@ -2147,7 +2147,7 @@ Summary
 
 
 As we mentioned in the introduction, most applications need to store or
-retrieve data for a lot of different reasons. In this chapter, we saw
+retrieve data for a lot of different reasons. In this lab, we saw
 that Kubernetes provides various ways of provisioning storage for not
 just storing the state of an application, but also for the long-term
 storage of data.
@@ -2162,5 +2162,5 @@ containers. Next, we learned how to request storage dynamically using
 only the PVCs with pre-created storage classes. We also learned about
 the life cycle of these volumes with respect to that of the pods.
 
-In the next chapter, we will extend these concepts further and learn how
+In the next lab, we will extend these concepts further and learn how
 to store application configurations and secrets.
