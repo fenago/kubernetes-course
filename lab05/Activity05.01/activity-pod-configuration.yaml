@@ -7,7 +7,7 @@ spec:
   restartPolicy: OnFailure
   containers:
     - name: custom-application-container
-      image: packtworkshops/the-kubernetes-workshop:custom-application-for-pods-chapter
+      image: fenago/the-kubernetes-workshop:custom-application-for-pods-chapter
       readinessProbe:
         exec:
           command:

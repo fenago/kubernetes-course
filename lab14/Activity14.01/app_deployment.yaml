@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: kubernetes-test-ha-application-with-mysql
-          image: packtworkshops/the-kubernetes-workshop:demo-app-with-mysql
+          image: fenago/the-kubernetes-workshop:demo-app-with-mysql
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
