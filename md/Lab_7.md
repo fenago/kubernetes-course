@@ -88,8 +88,7 @@ following steps:
     ```
     
 
-    Note that `rs` is a short form of `replicaset`
-    in all kubectl commands.
+    Note that `rs` is a short form of `replicaset` in all kubectl commands.
 
     You should see the following response:
 
@@ -135,14 +134,6 @@ following steps:
     kubectl describe rs nginx-replicaset
     ```
     
-
-    You should see output similar to the following:
-
-    
-    ![](./images/B14870_07_01.jpg)
-    
-
-
 
 6.  Next, we will inspect the Pods created by this ReplicaSet and verify
     that they have been created with the correct configuration. Run the
@@ -191,87 +182,6 @@ preceding output to understand the ReplicaSet that\'s running.
 
 
 
-### Labels on the ReplicaSet
-
-Consider the following line from the output shown in *Figure 7.1*:
-
-
-```
-Labels:       app=nginx
-```
-
-It shows that, as desired, the ReplicaSet was created with a label key
-called `app` with a value of `nginx`.
-
-
-
-### Selectors for the ReplicaSet
-
-Now, consider the following line from the output shown in *Figure 7.1*:
-
-
-```
-Selector:     environment=production
-```
-
-This shows that the ReplicaSet is configured with an
-`environment=production` Pod selector. This means that this
-ReplicaSet will try to acquire Pods that have this label.
-
-
-
-### Replicas
-
-Consider the following line from the output shown in *Figure 7.1*:
-
-
-```
-Replicas:     2 current / 2 desired
-```
-
-We can see that the ReplicaSet has the desired count of `2`
-for the Pods, and it also shows that there are currently two replicas
-present.
-
-
-
-### Pods Status
-
-While the `Replicas` field only shows the number of Pods
-currently present, `Pods Status` shows the actual status of
-those Pods:
-
-
-```
-Pods Status:  2 Running / 0 Waiting / 0 Succeeded / 0 Failed
-```
-
-We can see that there are currently two Pods running under this
-ReplicaSet.
-
-
-
-### Pods Template
-
-Now, let\'s consider the `Pod Template` section of the output
-shown in *Figure 7.1*. We can see that the Pod template is the same as
-was described in the configuration.
-
-
-
-### Events
-
-In the last section of the output shown in *Figure 7.1*, we can see that
-there are two events, which denotes that two pods were created to get to
-the desired count of two Pods for the ReplicaSet.
-
-In the last exercise, we created a ReplicaSet to maintain a number of
-running replicas. Now, let\'s consider a scenario where some nodes or
-Pods fail for some reason. We will see how the ReplicaSet will behave in
-this situation.
-
-
-
 Exercise 7.02: Deleting Pods Managed by a ReplicaSet
 ----------------------------------------------------
 
@@ -279,7 +189,7 @@ In this exercise, we will delete one of the Pods managed by a ReplicaSet
 to see how it responds. This way, we will be simulating a single or
 multiple Pods failing during the runtime of a ReplicaSet:
 
-Note
+**Note**
 
 In this exercise, we will assume that you have successfully completed
 the previous exercise as we will be reusing the ReplicaSet created in

@@ -317,7 +317,8 @@ kubectl commands from `default` to `kube-public`.
     ```
     kubectl config set-context $(kubectl config current-context) --namespace kube-public
     ```
-    
+
+    **Note:** Above command should be run in `git bash` only. It will not work in cmd/powershell.
 
     You should see the following response:
 
@@ -362,7 +363,8 @@ kubectl commands from `default` to `kube-public`.
     ```
     kubectl config set-context $(kubectl config current-context) --namespace default
     ```
-    
+
+    **Note:** Above command should be run in `git bash` only. It will not work in cmd/powershell.
 
     You should see the following response:
 
@@ -380,19 +382,7 @@ reset the default namespace of the context.
 Node
 ----
 
-As you have learned in earlier labs, nodes are the various machines
-running in our cluster. This field reflects the node in the Kubernetes
-cluster where this pod was running. Knowing what node a pod is running
-on can help us with debugging issues with that pod. Observe the sixth
-line of the output shown in *Figure 5.1*:
-
-
-```
-Node: minikube/10.0.2.15
-```
-
-We can list all the nodes in our Kubernetes cluster by running the
-following command:
+We can list all the nodes in our Kubernetes cluster by running the following command:
 
 
 ```
@@ -404,31 +394,11 @@ You should see the following response:
 
 ```
 NAME         STATUS      ROLES       AGE         VERSION
-minikube     Ready       <none>      16d         v1.14.3
+minikube     Ready       <none>      16d         v1.23.3
 ```
 
 In this case, there\'s only one node in our cluster because we are using
-Minikube for these exercises:
-
-
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: firstpod
-spec:
-  nodeName: my-favorite-node # run this pod on a specific node
-  containers:
-  - name: my-first-pod
-    image: nginx
-```
-
-If we have more than one node in our cluster, we can configure our pod
-to run on a particular node by adding the following `nodeName`
-field to the configuration, as seen in the sixth line in the previous
-spec.
-
-Note
+Minikube for these exercises.
 
 In a production environment, `nodeName` is typically not used
 for assigning a certain pod to run on the desired node. In the next
@@ -436,60 +406,7 @@ lab, we will learn about `nodeSelector`, which is a better
 way to control which node the pod gets assigned to.
 
 
-
-Status
-------
-
-This field tells us the status of the pod so that we can take
-appropriate action, such as starting or stopping a pod as required.
-While this demonstration shows one of the ways to get the status of the
-pod, in actual practice, you would want to automate actions based on the
-pod status. Consider the tenth line of the output shown in *Figure 5.1*:
-
-
-```
-Status: Running
-```
-
-This states that the current status of the pod is `Running`.
-This field reflects which phase of its life cycle a pod is in. We will
-talk about various phases of a pod\'s life cycle in the next section of
-this lab.
-
-
-
-Containers
-----------
-
-Earlier in this lab, we saw that we can bundle various containers
-inside a pod. This field lists all the containers that we have created
-in this pod. Consider the output field from line 12 onwards in *Figure
-5.1*:
-
-
-![](./images/B14870_05_02.jpg)
-
-
-
-
-
-We have only one in this case. We can see that the name and the image of
-the container are the same as we specified in the YAML configuration.
-The following is a list of the other fields that we can set:
-
--   `Image`: Name of the Docker image
--   `Args`: The arguments to the entry point for the container
--   `Command`: The command to run on the container once it
-    starts
--   `Ports`: A list of ports to expose from the container
--   `Env`: A list of environment variables to be set in the
-    container
--   `resources`: The resource requirements of the container
-
-In the following exercise, we shall create a container using a simple
-command.
-
-
+In the following exercise, we shall create a container using a simple command.
 
 Exercise 5.05: Using CLI Commands to Create a Pod Running a Container
 ---------------------------------------------------------------------
@@ -569,11 +486,6 @@ In the log, which keeps updating periodically, we see a dot
 (`.`) character printed on a new line every 5 seconds. Thus,
 we have successfully created the desired container.
 
-Note
-
-The `-f` flag is to follow the logs on the container. That is,
-the log keeps updating in real-time. If we skip that flag, we will see
-the logs without following them.
 
 In the next exercise, we shall run a container that opens up a port,
 which is something that you would have to do regularly to make the
@@ -630,7 +542,7 @@ expose a port that we can access from outside the pod.
 
     
     ```
-    sudo kubectl port-forward pod/port-exposed-pod 80
+    kubectl port-forward pod/port-exposed-pod 80
     ```
     
 
@@ -643,15 +555,15 @@ expose a port that we can access from outside the pod.
     ```
     
 
-    This will expose port `80` from the pod to localhost port
-    `80`.
+    This will expose port `80` from the pod to localhost port `80`.
 
-    Note
-
-    We will need to keep this command running in one terminal.
+    **Note:** We will need to keep this command running in one terminal.
 
 4.  Now, we can simply enter either `http://localhost` or
     `http://127.0.0.1` in the address bar of the browser.
+
+    ![](./images/3.png)
+
 
 5.  Alternatively, we can run the following command and see the HTML
     source code of the default index page in the response:
@@ -686,24 +598,10 @@ expose a port that we can access from outside the pod.
     
 
 
-
 The log shows that our container that is running an `nginx`
 image is receiving our HTTP request to localhost and responding as
 expected.
 
-We can also define the minimum and maximum resource allocation for our
-containers. This is useful for managing the resources used by our
-deployments. This can be achieved using the following two fields in the
-YAML configuration file:
-
--   `limits`: Describes the maximum amount of resources
-    allowed for this container.
--   `requests`: Describes the minimum amount of resources
-    required for this container.
-
-We can use these fields to define the minimum and maximum memory and CPU
-resources for our containers. The CPU resource is measured in CPU units.
-1 CPU unit means that the container has access to 1 logical CPU core.
 
 In the next exercise, we shall create a container with defined resource
 requirements.
@@ -888,16 +786,6 @@ there\'s a warning stating that the Kubernetes controller couldn\'t find
 any nodes that satisfy the CPU and memory requirements of the pod.
 Hence, the pod scheduling has failed.
 
-To summarize, pod scheduling works on the basis of resource
-requirements. A pod will only be scheduled on a node that satisfies all
-its resource requirements. If we do not specify a resource (memory or
-CPU) limit, there\'s no upper bound on the number of resources a pod can
-use.
-
-This poses the risk of one bad pod consuming too much CPU or allocating
-too much memory that impacts the other pods running in the same
-namespace/cluster. Hence, it\'s a good idea to add resource requests and
-limits to the pod configuration in a production environment.
 
 As mentioned earlier in the lab, a pod can run
 more than one container. In the following exercise, we will create a pod
@@ -1387,8 +1275,7 @@ keep it separate from the rest of the stuff that you created during the
 exercises. So, feel free to create a namespace and create the pod in
 that namespace.
 
-Here are the high-level steps to complete this
-activity:
+Here are the high-level steps to complete this activity:
 
 1.  Create a new namespace for your pod.
 
@@ -1405,15 +1292,6 @@ activity:
 
     The solution to this activity can be found at the following address:
     `Activity_Solutions\Solution_Final.pdf`.
-
-
-
-
-
-
-
-
-
 
 
 

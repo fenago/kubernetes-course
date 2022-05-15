@@ -5,12 +5,9 @@ Labels and Annotations
 In this lab, we will assign metadata to these pods in order to
 identify the pods through queries based on some metadata and then add
 additional unstructured metadata.
-We
-will cover labels and annotations in detail and examine the differences
+We will cover labels and annotations in detail and examine the differences
 between them. We will use both labels and annotations and see when to
 use one or the other.
-
-
 
 
 In the upcoming exercises, we will show you how you can create pods with
@@ -443,6 +440,18 @@ label. Thus, we have learned how to modify and delete an existing label
 for a running pod.
 
 
+**Selecting Kubernetes Objects Using Label Selectors**
+
+In order to group various objects based on their labels, we use a label selector. It allows users to identify a set of objects matching certain criteria.
+
+We can use the following syntax for the kubectl get command and pass the label selector using the -l or --label argument:
+
+```
+kubectl get pods -l {label_selector}
+```
+
+In the following exercises, we will see how to use this command in an actual scenario.
+
 
 Exercise 6.04: Selecting Pods Using Equality-Based Label Selectors
 ------------------------------------------------------------------
@@ -577,8 +586,7 @@ this exercise successfully, perform the following steps:
     ```
     
 
-    The following response indicates that the
-    `frontend-production` pod has been created:
+    The following response indicates that the `frontend-production` pod has been created:
 
     
     ![](./images/B14870_06_10.jpg)
@@ -594,8 +602,7 @@ this exercise successfully, perform the following steps:
     ```
     
 
-    The following response indicates that the
-    `backend-production` pod has been created:
+    The following response indicates that the `backend-production` pod has been created:
 
     
     ![](./images/B14870_06_11.jpg)
@@ -611,8 +618,7 @@ this exercise successfully, perform the following steps:
     ```
     
 
-    The following response indicates that the
-    `frontend-staging` pod has been created:
+    The following response indicates that the `frontend-staging` pod has been created:
 
     
     ![](./images/B14870_06_12.jpg)
@@ -677,50 +683,7 @@ environment, or the frontend or backend infrastructure.
 
 
 
-### Set-Based Selectors
-
-Set-based selectors allow Kubernetes objects to be selected on the basis
-of a set of values for given keys. These kinds of selectors allow us to
-match all objects that have a given label key with a value in a given
-set of values.
-
-There are three kinds of operators: `in`, `notin`,
-and `exists`. Let\'s see what these operators mean with the
-help of some examples:
-
-
-```
-environment in (production, staging)
-```
-
-In the preceding example, the selector matches all the objects that have
-an `environment` label key and the value is either
-`production` or `staging`:
-
-
-```
-team notin (devops-infra)
-```
-
-The selector in the preceding example matches all the objects that have
-a `team` label key and the value is anything other than
-`devops-infra`. It also matches those objects that don\'t have
-the `team` label key:
-
-
-```
-!critical
-```
-
-In the preceding example, the selector is equivalent to the
-`exists` operation. It matches all the objects that don\'t
-have the `critical` label key. It doesn\'t check for a value
-at all.
-
-Note
-
-The two types of selectors can also be used together, as we will observe
-in *Exercises 6.06*, *Selecting Pods Using a Mix of Label Selectors*.
+#### Set-Based Selectors
 
 Let\'s implement the set-based selectors in the following exercise.
 
@@ -732,7 +695,7 @@ Exercise 6.05: Selecting Pods Using Set-Based Label Selectors
 In this exercise, we aim to create some pods with different labels and
 then select them using set-based selectors.
 
-Note
+**Note**
 
 In this exercise, we assume that you have successfully completed
 *Exercise 6.04*, *Selecting Pods Using Equality-Based Label Selectors*.
@@ -754,8 +717,7 @@ steps:
     ```
     
 
-    The following response indicates that the
-    `frontend-production` pod exists:
+    The following response indicates that the `frontend-production` pod exists:
 
     
     ![](./images/B14870_06_13.jpg)
@@ -775,8 +737,7 @@ steps:
     ```
     
 
-    The following response indicates that the
-    `backend-production` pod exists:
+    The following response indicates that the `backend-production` pod exists:
 
     
     ![](./images/B14870_06_14.jpg)
@@ -796,8 +757,7 @@ steps:
     ```
     
 
-    The following response indicates that the
-    `frontend-staging` pod exists:
+    The following response indicates that the `frontend-staging` pod exists:
 
     
     ![](./images/B14870_06_15.jpg)
@@ -816,7 +776,8 @@ steps:
     kubectl get pods -l 'role in (frontend, backend),environment in (production)'
     ```
     
-
+    **Note:** Above command should be run in `git bash` only. It will not work in cmd/powershell.
+   
     You should see the following response:
 
     
@@ -836,7 +797,9 @@ steps:
     ```
     kubectl get pods -l 'environment,role,role notin (backend)'
     ```
-    
+
+    **Note:** Above command should be run in `git bash` only. It will not work in cmd/powershell.
+     
 
     This should produce the following output:
 
@@ -861,7 +824,7 @@ In this exercise, we aim to create some pods with different labels and
 then select them using a combination of equality-based and set-based
 selectors.
 
-Note
+**Note**
 
 In this exercise, we assume that you have successfully completed
 *Exercise 6.04*, *Selecting Pods Using Equality-Based Label Selectors*.
@@ -1051,109 +1014,6 @@ As we can see in the highlighted section of the preceding output, the
 desired metadata has been added as annotations to the pod. Now, this
 data can be used by any deployment tools or clients who may know about
 the key names used.
-
-
-
-Note the hyphen at the end of the preceding command. Now that we have
-learned about labels and annotations as well as the various ways in
-which we can use them, let\'s bring all of this together in the
-following activity.
-
-
-
-Activity 6.01: Creating Pods with Labels/Annotations and Grouping Them as per Given Criteria
---------------------------------------------------------------------------------------------
-
-Consider that you\'re working on supporting two teams called
-`product-development` and `infra-libraries`. Both
-teams have some application pods for different environments (production
-or staging). The teams also want to mark their pods as critical if that
-is indeed the case.
-
-In short, you need to create three pods as per the following metadata
-requirements:
-
--   An `arbitrary-product-application` pod that runs in a
-    production environment and is owned by the
-    `product-development` team. This needs to be marked as a
-    non-critical pod.
--   An `infra-libraries-application` pod that runs in a
-    production environment and is owned by the
-    `infra-libraries` team. This needs to be marked as a
-    critical pod.
--   An `infra-libraries-application-staging` pod that runs in
-    a staging environment and is owned by the
-    `infra-libraries` team. Since it runs in staging, the
-    criticality of the pod does not need to be indicated.
-
-In addition to this, both teams also want to add another piece of
-metadata -- \"team-link\" in which they want to store the internal link
-of the team\'s contact information.
-
-You should be able to perform the following tasks once all three pods
-have been created:
-
-1.  Group all the pods that run in the production environment and are
-    critical.
-
-2.  Group all the pods that are not critical among all environments.
-
-    Note
-
-    Ideally, you would want to create this pod to be in a different
-    namespace so as to keep it separate from the rest of the stuff that
-    you created during the exercises. Therefore, feel free to create a
-    namespace and create the pod in that namespace.
-
-The high-level steps to perform this activity are as follows:
-
-1.  Create a namespace for this activity.
-2.  Write the pod configurations for all three pods. Ensure that all the
-    metadata requested is added correctly among the labels and
-    annotations.
-3.  Create all three pods using the configurations written in the
-    previous step.
-4.  Make sure that all three pods are running and have all the requested
-    metadata.
-5.  Group all the pods that run in the production environment and are
-    critical.
-6.  Group all the pods that are not critical among all environments.
-
-For the first task, your goal should get the
-`infra-libraries-application` pod once you complete the
-activity, as shown here:
-
-
-```
-NAME                         READY   STATUS       RESTARTS    AGE
-infra-libraries-application  1/1     Running      0           12m
-```
-
-For the second task, your goal is to obtain
-`arbitrary-product-application` and
-`infra-libraries-application-staging` once you complete the
-activity, as shown here:
-
-
-```
-NAME                                 READY  STATUS    RESTARTS   AGE
-arbitrary-product-application        1/1    Running   0          14m
-infra-libraries-application-staging  1/1    Running   0          14m
-```
-
-Note
-
-The solution to this activity can be found at the following address:
-`Activity_Solutions\Solution_Final.pdf`.
-
-
-
-
-
-
-
-
-
 
 
 
